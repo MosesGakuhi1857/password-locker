@@ -1,5 +1,6 @@
 import unittest #importing the unittest module
 from user import User #importing the User class
+from credentials import Credentials #importing the credentials class
 
 class TestUser(unittest.TestCase):
     
@@ -34,7 +35,21 @@ class TestUser(unittest.TestCase):
         """
         
         self.new_user.save_user()
-        self.assertEqual(len(User.user_list),1)
+        self.assertEqual(len(User.user_list),2)
         
-# if __name__ == '__main__':
-#     unittest.main()
+    def test_delete_user(self):
+        
+        """
+        test_delete_user to test if we can remove a user credentials from user_list
+        """
+        self.new_user.save_user() 
+        test_user = User("Mosekings","baroda")
+        test_user.save_user()
+        self.new_user.delete_user()
+        self.assertEqual(len(User.user_list),1)
+
+        
+        
+            
+if __name__ == '__main__':
+    unittest.main()
