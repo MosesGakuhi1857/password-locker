@@ -49,3 +49,33 @@ class Credentials:
         """
         
         user_credentials_list= []
+        for credentials in cls.credentials_list:
+            
+            user_credentials_list.append(credentials)
+        return user_credentials_list
+    
+    def delete_credentials(self):
+        
+        """
+        delete credentials method deletes saved credentials
+        """
+        
+        Credentials.credentials_list.remove(self)
+        
+    @classmethod
+    def find_by_socialM(cls,socialM):
+        """
+        Method that takes in a social media's and returns an account that matches the socialmedia name
+        """
+        for Credentials in cls.credentials_list:
+            if Credentials.socialM == socialM:
+                return Credentials
+            
+    @classmethod
+    def copy_credential(cls,socialM):
+        """
+        class method that copies credential's info after the account's social media's name is entered
+        """
+        
+        find_credentials = Credentials.find_by_socialM(socialM)
+        # return pyperclip.copy(find_credentials.passcode)
