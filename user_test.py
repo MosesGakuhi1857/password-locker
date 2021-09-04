@@ -1,4 +1,5 @@
 import unittest #importing the unittest module
+import pyperclip
 from user import User #importing the User class
 from credentials import Credentials #importing the credentials class
 
@@ -135,8 +136,23 @@ class testCredentials(unittest.TestCase):
         self.new_credentials.delete_credentials()
         self.assertEqual(len(Credentials.credentials_list),1)
         
+    def test_copy_credentials(self):
+        """
+        test to see if the copy method copies properly
+        """
         
+        self.new_credentials.save_credentials()
+        instagram = Credentials("instagram","kings","musa") 
+        instagram.save_credentials()
+        find_credentials = None
         
+        for credentials in Credentials.user_credentials_list:
+            find_credentials = Credentials.find_by_socialM(credentials.socialM)
+            return pyperclip.copy(find_credentials.passcode)
+        
+        Credentials.copy_credential(self.new_credentials.socialM)
+        self.assertEqual("baroda",pyperclip.paste())
+        print(pyperclip.paste())
         
 if __name__ == '__main__':
     unittest.main()
