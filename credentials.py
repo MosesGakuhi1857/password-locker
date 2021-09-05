@@ -1,5 +1,6 @@
 import random
 import string
+import pyperclip
 
 class Credentials:
     """
@@ -78,4 +79,4 @@ class Credentials:
         """
         
         find_credentials = Credentials.find_by_socialM(socialM)
-        # return pyperclip.copy(find_credentials.passcode)
+        return pyperclip.copy(find_credentials.passcode)
