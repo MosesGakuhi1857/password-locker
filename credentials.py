@@ -1,6 +1,6 @@
 import random
 import string
-import pyperclip
+from user import User
 
 class Credentials:
     """
@@ -72,11 +72,4 @@ class Credentials:
             if Credentials.socialM == socialM:
                 return Credentials
             
-    @classmethod
-    def copy_credential(cls,socialM):
-        """
-        class method that copies credential's info after the account's social media's name is entered
-        """
-        
-        find_credentials = Credentials.find_by_socialM(socialM)
-        return pyperclip.copy(find_credentials.passcode)
+  
