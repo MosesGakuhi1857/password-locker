@@ -50,11 +50,7 @@ def display_credentials(socialM):
     """
     return Credentials.display_credentials(socialM)
 
-def copy_credential (socialM):
-    """
-    Function to copy credentials
-    """
-    return Credentials.copy_credential(socialM)
+
 
 def main():
     print(' ')
@@ -66,7 +62,7 @@ def main():
     while True:
         print( " ")
         print("."*40)
-        print("Kindly use the short codes: \n cc=create a new account on password locker, \n log = to login, \n dlt= To delete the credentials, \n dc = to display the credentials list, \n cp= To copy the password, \n ex = exit")
+        print("Kindly use the short codes: \n cc=create a new account on password locker, \n log = to login, \n dlt= To delete the credentials, \n dc = to display the credentials list, \n ex = exit")
         
         short_code = input ("Choose a short code: ").lower().strip()
         
@@ -74,7 +70,7 @@ def main():
             break
         
         elif short_code == "cc":
-            print("."*30)
+            print("."*35)
             print(" ")
             print("Create a new account:")
             login_username = input ("Input the username:").strip()
@@ -84,13 +80,13 @@ def main():
         
         
         
-        elif short_code == "lg":
+        elif short_code == "log":
         
             print("."*30)
             print(" ")
             print("to login enter your account details:")
-            login_username = (input ("Enter your username :") )
-            password = str(input("Enter your password"))
+            login_username = (input ("Enter your username :"))
+            password = str(input("Enter your password :"))
             user_exist = verify_user(login_username,password)
             if user_exist == login_username:
                 print(" ")
@@ -99,7 +95,7 @@ def main():
             
                 while True:
                      print("_"*40)
-                     print('to navigate to account use code:\n sm = to add a social media account, \n dc = to display accounts \n cy = to copy  password \n dlt = to delete \n ex- Exit')
+                     print('to navigate to account use code:\n sm = to add a social media account, \n dc = to display accounts \n dlt = to delete \n ex- Exit')
                      short_code=input('Enter a choice: ').lower().strip()
                      print("_"*40)
                      if short_code =='ex':
@@ -144,16 +140,16 @@ def main():
                                  break
                              else:
                                  print('Try Again!.')
-                         save_account(create_credentials(socialM,username,passcode))
+                         save_credentials(create_credentials(socialM,username,passcode))
                          print(' ')
                          print(f'Account Created: Name:  {socialM}, userName:{username}, Password:{passcode}')
                          print(' ')
                      elif short_code == 'dc':
                          print(' ')
-                         if display_accounts(socialM):
+                         if display_credentials(socialM):
                              print('Here is a list of all accounts')
                              print(' ')
-                             for account in display_accounts(socialM):
+                             for account in display_credentials(socialM):
                                  print(f'social media name: {credentials.socialM} - username: {credentials.username} - Password: {credentials.passcode}')
                                  print(' ')
                              else:
@@ -161,12 +157,7 @@ def main():
                                  print("you don't seem to have any account")
                                  print(' ')
                     
-                         elif short_code =='cy':
-                             print(' ')
-                             chosen_credentials = input("enter the name of social media account: ")
-
-                             copy_account(chosen_credentials)
-                             print(' ')
+                         
                          else: 
                              print('TRY Again')
                         
